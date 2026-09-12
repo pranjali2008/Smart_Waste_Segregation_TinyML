@@ -30,7 +30,7 @@
         </a>
 
         <button
-          class="navbar-toggler border-0 shadow-none"
+          class="navbartoggler border-0 shadow-none"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#mobileMenu"
@@ -88,6 +88,9 @@
         ></a>
         <a href="#how-it-works" class="mobile-link"
           >How It Works <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="{% url 'dashboard' %}" class="mobile-link"
+          >Dashboard <i class="fa-solid fa-arrow-right"></i
         ></a>
         <a href="#classifier" class="mobile-link"
           >AI Classifier <i class="fa-solid fa-arrow-right"></i
@@ -274,9 +277,7 @@
               Test the waste <span>intelligence</span>
             </h2>
             <p class="text-soft">
-              Upload a waste image to preview the classification experience.
-              Connect this form to your existing Python inference function when
-              the Django backend is ready.
+              Upload a waste image and let our AI scanner identify its category. Get an instant prediction with confidence information to help you segregate waste correctly.
             </p>
             <div class="class-list mt-4">
               <span><i class="fa-solid fa-file-lines"></i> Paper</span>
