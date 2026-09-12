@@ -1,0 +1,7 @@
+ABSTRACT
+
+The rapid increase in municipal solid waste and improper segregation at source have become major environmental challenges. Traditional manual sorting is inefficient, unhygienic, and leads to contamination of recyclable materials. This project presents a Smart Waste Segregation and Decomposition System that combines TinyML-based image classification with conventional sensors to automatically identify and sort waste into multiple categories.
+
+A lightweight convolutional neural network (based on MobileNetV2) is trained to classify common waste items such as paper, plastic, cardboard, metal, organic matter, and batteries. The trained model is optimized and deployed for edge inference. Upon detection, servo motors direct the waste into the appropriate bin. Organic waste is routed to an inbuilt decomposition chamber equipped with temperature and humidity sensors to monitor the composting process.
+
+The system is low-cost, modular, and suitable for households, educational institutions, and small communities. It demonstrates the practical application of embedded machine learning, sensor interfacing, actuator control, and sustainable engineering. Experimental results show reliable classification under controlled conditions and successful monitoring of the decomposition process, making the prototype an effective educational and practical solution for diploma-level engineering projects.

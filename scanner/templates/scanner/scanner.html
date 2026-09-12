@@ -1,0 +1,661 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoSort AI | Smart Waste Segregation</title>
+    <meta
+      name="description"
+      content="Smart Waste Segregation and Decomposition System with TinyML."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top eco-navbar">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+          <span class="brand-mark"><i class="fa-solid fa-recycle"></i></span>
+          <span>Eco<span>Sort</span><small> AI</small></span>
+        </a>
+
+        <button
+          class="navbar-toggler border-0 shadow-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileMenu"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#how-it-works">How It Works</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#classifier">AI Classifier</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#monitor">Monitoring</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-nav" href="#classifier"
+                ><i class="fa-solid fa-camera me-2"></i>Try Demo</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MOBILE OFFCANVAS -->
+    <div
+      class="offcanvas offcanvas-end mobile-menu"
+      tabindex="-1"
+      id="mobileMenu"
+    >
+      <div class="offcanvas-header border-bottom border-secondary-subtle">
+        <div class="navbar-brand d-flex align-items-center gap-2">
+          <span class="brand-mark"><i class="fa-solid fa-recycle"></i></span>
+          <span>Eco<span>Sort</span><small> AI</small></span>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <a href="#home" class="mobile-link"
+          >Home <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#how-it-works" class="mobile-link"
+          >How It Works <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#classifier" class="mobile-link"
+          >AI Classifier <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#monitor" class="mobile-link"
+          >Monitoring <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <header id="home" class="hero-section">
+      <div class="hero-grid"></div>
+      <div class="container position-relative">
+        <div class="row align-items-center min-vh-100 py-5">
+          <div class="col-lg-7 pt-5">
+            <div class="eyebrow"><span></span> TINYML • SMART WASTE • IOT</div>
+            <h1>Sort smarter.<br /><em>Waste less.</em></h1>
+            <p class="hero-text">
+              An intelligent waste segregation system that combines computer
+              vision, sensors and automated routing to make waste management
+              cleaner and more efficient.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="#classifier" class="btn btn-primary-custom"
+                ><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Classify
+                Waste</a
+              >
+              <a href="#how-it-works" class="btn btn-outline-light-custom"
+                >Explore System <i class="fa-solid fa-arrow-down ms-2"></i
+              ></a>
+            </div>
+            <div class="hero-trust mt-5">
+              <div><strong>6</strong><span>Waste classes</span></div>
+              <div><strong>AI</strong><span>Edge inference</span></div>
+              <div><strong>24/7</strong><span>Smart monitoring</span></div>
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block">
+            <div class="hero-device-wrap">
+              <div class="glow-orb"></div>
+              <div class="device-card">
+                <div class="device-top">
+                  <span class="live-dot"></span> SYSTEM ONLINE
+                  <span class="ms-auto">TinyML</span>
+                </div>
+                <div class="scanner">
+                  <div class="scan-line"></div>
+                  <i class="fa-solid fa-recycle scanner-icon"></i>
+                  <div class="corner c1"></div>
+                  <div class="corner c2"></div>
+                  <div class="corner c3"></div>
+                  <div class="corner c4"></div>
+                </div>
+                <div class="device-result">
+                  <div>
+                    <small>LAST DETECTION</small><strong>Organic</strong>
+                  </div>
+                  <div class="confidence">94.8%</div>
+                </div>
+                <div class="device-route">
+                  <span><i class="fa-solid fa-leaf"></i></span>
+                  <div>
+                    <small>ROUTING TO</small
+                    ><strong>Decomposition Chamber</strong>
+                  </div>
+                  <i class="fa-solid fa-check ms-auto"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- STATS -->
+    <section class="stats-strip">
+      <div class="container">
+        <div class="row g-3">
+          <div class="col-6 col-lg-3">
+            <div class="stat-item">
+              <i class="fa-solid fa-brain"></i>
+              <div>
+                <strong>TinyML</strong><span>Edge AI classification</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat-item">
+              <i class="fa-solid fa-layer-group"></i>
+              <div><strong>6 Classes</strong><span>Paper to battery</span></div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat-item">
+              <i class="fa-solid fa-gears"></i>
+              <div>
+                <strong>Auto Route</strong><span>Servo-based sorting</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3">
+            <div class="stat-item">
+              <i class="fa-solid fa-temperature-half"></i>
+              <div>
+                <strong>Live Monitor</strong><span>Temp & humidity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="section-padding light-section">
+      <div class="container">
+        <div class="section-heading text-center mx-auto">
+          <span class="section-kicker">THE PIPELINE</span>
+          <h2>From waste input to <span>smart action</span></h2>
+          <p>
+            Every item follows a simple intelligent pipeline — detect, classify,
+            decide and route.
+          </p>
+        </div>
+        <div class="row g-4 mt-4">
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <div class="process-number">01</div>
+              <div class="process-icon">
+                <i class="fa-solid fa-box-open"></i>
+              </div>
+              <h5>Waste Input</h5>
+              <p>Waste enters the smart segregation chamber.</p>
+              <div class="process-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <div class="process-number">02</div>
+              <div class="process-icon"><i class="fa-solid fa-camera"></i></div>
+              <h5>Image Capture</h5>
+              <p>Camera captures the item for edge inference.</p>
+              <div class="process-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <div class="process-number">03</div>
+              <div class="process-icon">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              <h5>TinyML Decision</h5>
+              <p>The model predicts the waste class and confidence.</p>
+              <div class="process-arrow">
+                <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3">
+            <div class="process-card">
+              <div class="process-number">04</div>
+              <div class="process-icon">
+                <i class="fa-solid fa-arrows-turn-to-dots"></i>
+              </div>
+              <h5>Auto Routing</h5>
+              <p>Servo control sends waste to the right destination.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLASSIFIER -->
+    <section id="classifier" class="section-padding classifier-section">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <span class="section-kicker">AI CLASSIFIER</span>
+            <h2 class="text-white mt-2">
+              Test the waste <span>intelligence</span>
+            </h2>
+            <p class="text-soft">
+              Upload a waste image to preview the classification experience.
+              Connect this form to your existing Python inference function when
+              the Django backend is ready.
+            </p>
+            <div class="class-list mt-4">
+              <span><i class="fa-solid fa-file-lines"></i> Paper</span>
+              <span><i class="fa-solid fa-box"></i> Cardboard</span>
+              <span><i class="fa-solid fa-bottle-water"></i> Plastic</span>
+              <span><i class="fa-solid fa-cube"></i> Metal</span>
+              <span><i class="fa-solid fa-leaf"></i> Organic</span>
+              <span
+                ><i class="fa-solid fa-triangle-exclamation"></i> Battery</span
+              >
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="classifier-panel">
+              <div class="panel-header">
+                <div><span class="live-dot"></span> CLASSIFICATION CONSOLE</div>
+                <span class="panel-status">READY</span>
+              </div>
+              <form
+                id="classifierForm"
+                action=""
+                enctype="multipart/form-data"
+                method="post"
+              >
+                {% csrf_token %}
+                <label for="wasteImage" class="upload-zone" id="uploadZone">
+                  <input
+                    type="file"
+                    name="waste_image"
+                    id="wasteImage"
+                    accept="image/*"
+                    hidden
+                  />
+                  <input
+                    type="file"
+                    id="cameraInput"
+                    accept="image/*"
+                    capture="environment"
+                    hidden
+                    />
+
+                  <div id="uploadContent">
+                    <div class="upload-icon">
+                      <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h5>Drop waste image here</h5>
+                    <p>or click to browse • JPG, PNG, WEBP</p>
+                  </div>
+                  <img
+                    id="previewImage"
+                    alt="Waste preview"
+                    class="preview-image d-none"
+                  />
+                </label>
+                <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
+                  <button
+                    type="button"
+                    class="btn btn-outline-light-custom flex-grow-1"
+                    id="captureWaste"
+                  >
+                    <i class="fa-solid fa-camera me-2"></i>
+                    Capture Waste
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-primary-custom flex-grow-1"
+                  >
+                    <i class="fa-solid fa-bolt me-2"></i>Run Classification
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-dark-outline"
+                    id="clearImage"
+                  >
+                    Clear
+                  </button>
+                </div>
+              </form>
+              <div class="result-panel mt-4" id="resultPanel">
+
+  {% if prediction %}
+
+    <div class="result-placeholder">
+
+      <i class="fa-solid fa-circle-check"></i>
+
+      <div>
+        <strong>Detected: {{ prediction|upper }}</strong>
+
+        <span>
+          Confidence: {{ confidence|floatformat:2 }}%
+        </span>
+
+        <span>🪙 You earned: +{{ green_coins }} Green Coins</span>
+
+        {% if prediction|lower == "plastic" %}
+          <span>♻️ Recommended: Dry / Recyclable Bin</span>
+
+        {% elif prediction|lower == "paper" %}
+          <span>♻️ Recommended: Dry / Recyclable Bin</span>
+
+        {% elif prediction|lower == "cardboard" %}
+          <span>♻️ Recommended: Dry / Recyclable Bin</span>
+
+        {% elif prediction|lower == "metal" %}
+          <span>🔩 Recommended: Metal Bin</span>
+
+        {% elif prediction|lower == "organic" %}
+          <span>🌱 Recommended: Decomposition Chamber</span>
+
+        {% elif prediction|lower == "battery" %}
+          <span>⚠️ Hazardous Waste — Handle Carefully</span>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  {% else %}
+
+    <div class="result-placeholder">
+
+      <i class="fa-solid fa-chart-simple"></i>
+
+      <div>
+        <strong>Awaiting image</strong>
+        <span>Classification result will appear here.</span>
+      </div>
+
+    </div>
+
+  {% endif %}
+
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="section-padding light-section">
+      <div class="container">
+        <div
+          class="section-heading d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3"
+        >
+          <div>
+            <span class="section-kicker">SMART DESTINATIONS</span>
+            <h2>Every class gets a <span>purpose</span></h2>
+          </div>
+          <p class="mb-0">
+            The classification output maps directly to the physical segregation
+            action defined in your inference logic.
+          </p>
+        </div>
+        <div class="row g-4 mt-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon recyclable">
+                <i class="fa-solid fa-recycle"></i>
+              </div>
+              <div>
+                <h5>Dry / Recyclable</h5>
+                <p>Paper • Cardboard • Plastic</p>
+              </div>
+              <span>01</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon metal">
+                <i class="fa-solid fa-cubes"></i>
+              </div>
+              <div>
+                <h5>Metal Bin</h5>
+                <p>Metal waste routing</p>
+              </div>
+              <span>02</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon organic">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <div>
+                <h5>Decomposition</h5>
+                <p>Organic → compost chamber</p>
+              </div>
+              <span>03</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon hazard">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div>
+                <h5>Hazardous Alert</h5>
+                <p>Battery → buzzer alert</p>
+              </div>
+              <span>04</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon sensor">
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <div>
+                <h5>Moisture Sensor</h5>
+                <p>Wet / dry confirmation</p>
+              </div>
+              <span>05</span>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="destination-card">
+              <div class="destination-icon sensor">
+                <i class="fa-solid fa-magnet"></i>
+              </div>
+              <div>
+                <h5>Metal Sensor</h5>
+                <p>Hybrid sensing backup</p>
+              </div>
+              <span>06</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MONITOR -->
+    <section id="monitor" class="section-padding monitor-section">
+      <div class="container">
+        <div class="section-heading text-center mx-auto">
+          <span class="section-kicker">DECOMPOSITION MONITOR</span>
+          <h2>Watch your system <span>stay healthy</span></h2>
+          <p>
+            Designed around the DHT sensor data emitted by the Arduino
+            controller.
+          </p>
+        </div>
+        <div class="row g-4 mt-4">
+          <div class="col-lg-8">
+            <div class="monitor-card h-100">
+              <div class="monitor-card-head">
+                <div><span class="live-dot"></span> LIVE SYSTEM TELEMETRY</div>
+                <span>UPDATED JUST NOW</span>
+              </div>
+              <div class="row g-3 mt-1">
+                <div class="col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-icon">
+                      <i class="fa-solid fa-temperature-half"></i>
+                    </div>
+                    <div>
+                      <small>TEMPERATURE</small
+                      ><strong>28.4°<sup>C</sup></strong
+                      ><span>Optimal range</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="metric-card">
+                    <div class="metric-icon">
+                      <i class="fa-solid fa-droplet"></i>
+                    </div>
+                    <div>
+                      <small>HUMIDITY</small><strong>64<sup>%</sup></strong
+                      ><span>Healthy moisture</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="health-progress mt-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Decomposition health</span><strong>82%</strong>
+                </div>
+                <div class="progress">
+                  <div class="progress-bar" style="width: 82%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="system-card h-100">
+              <span class="section-kicker">SYSTEM STATUS</span>
+              <div class="system-ring">
+                <div>
+                  <strong>98</strong><small>%</small><span>ONLINE</span>
+                </div>
+              </div>
+              <div class="status-row">
+                <span
+                  ><i class="fa-solid fa-circle-check"></i> TinyML model</span
+                ><strong>Ready</strong>
+              </div>
+              <div class="status-row">
+                <span
+                  ><i class="fa-solid fa-circle-check"></i> Servo control</span
+                ><strong>Ready</strong>
+              </div>
+              <div class="status-row">
+                <span><i class="fa-solid fa-circle-check"></i> DHT sensor</span
+                ><strong>Active</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <span class="section-kicker">BUILT FOR A CLEANER FUTURE</span>
+            <h2>Turn waste sorting into an intelligent process.</h2>
+            <p>
+              Connect this Django interface with your TinyML inference pipeline
+              and Arduino controller.
+            </p>
+          </div>
+          <a href="#classifier" class="btn btn-light-custom"
+            >Open Classifier <i class="fa-solid fa-arrow-right ms-2"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row g-4 py-5">
+          <div class="col-lg-5">
+            <a
+              class="navbar-brand d-flex align-items-center gap-2 mb-3"
+              href="#home"
+              ><span class="brand-mark"
+                ><i class="fa-solid fa-recycle"></i></span
+              ><span>Eco<span>Sort</span><small> AI</small></span></a
+            >
+            <p class="footer-text">
+              Smart Waste Segregation & Decomposition System powered by TinyML,
+              sensors and automation.
+            </p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h6>Navigate</h6>
+            <a href="#home">Home</a><a href="#how-it-works">How It Works</a
+            ><a href="#classifier">AI Classifier</a>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h6>System</h6>
+            <a href="#monitor">Monitoring</a
+            ><a href="#classifier">Classification</a
+            ><a href="#home">Dashboard</a>
+          </div>
+          <div class="col-lg-3">
+            <h6>Project Stack</h6>
+            <div class="stack-tags">
+              <span>Python</span><span>Django</span><span>TinyML</span
+              ><span>Arduino</span><span>Bootstrap</span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="footer-bottom d-flex flex-column flex-md-row justify-content-between gap-2"
+        >
+          <span>© 2026 EcoSort AI. Diploma Project.</span
+          ><span>Designed for smart & sustainable waste management.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/app.js' %}"></script>
+  </body>
+</html>

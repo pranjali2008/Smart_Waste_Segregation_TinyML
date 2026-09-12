@@ -1,0 +1,6 @@
+battery
+cardboard
+metal
+organic
+paper
+plastic

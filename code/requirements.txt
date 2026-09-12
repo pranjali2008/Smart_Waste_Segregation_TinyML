@@ -1,0 +1,12 @@
+Django
+gunicorn
+tensorflow>=2.15.0
+tensorflow-hub
+numpy
+opencv-python-headless
+Pillow
+matplotlib
+scikit-learn
+pandas
+tqdm
+edgeimpulse   # optional, if using Edge Impulse Python SDK
