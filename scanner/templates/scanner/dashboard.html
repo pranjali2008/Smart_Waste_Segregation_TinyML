@@ -24,8 +24,7 @@
   </head>
 
   <body>
-    <!-- NAVBAR -->
-
+   <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top eco-navbar">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
@@ -34,7 +33,7 @@
         </a>
 
         <button
-          class="navbar-toggler border-0 shadow-none"
+          class="navbar-toggler d-lg-none border-0 shadow-none"
           type="button"
           data-bs-toggle="offcanvas"
           data-bs-target="#mobileMenu"
@@ -54,9 +53,7 @@
               <a class="nav-link" href="#classifier">AI Classifier</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="{% url 'dashboard' %}"
-                >Dashboard</a
-              >
+              <a class="nav-link active" href="{% url 'dashboard' %}">Dashboard</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#monitor">Monitoring</a>
@@ -70,6 +67,43 @@
         </div>
       </div>
     </nav>
+
+    <!-- MOBILE OFFCANVAS -->
+    <div
+      class="offcanvas offcanvas-end mobile-menu"
+      tabindex="-1"
+      id="mobileMenu"
+    >
+      <div class="offcanvas-header border-bottom border-secondary-subtle">
+        <div class="navbar-brand d-flex align-items-center gap-2">
+          <span class="brand-mark"><i class="fa-solid fa-recycle"></i></span>
+          <span>Eco<span>Sort</span><small> AI</small></span>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <a href="{% url 'scanner' %}#home" class="mobile-link"
+          >Home <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#how-it-works" class="mobile-link"
+          >How It Works <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="{% url 'dashboard' %}" class="mobile-link active"
+          >Dashboard <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#classifier" class="mobile-link"
+          >AI Classifier <i class="fa-solid fa-arrow-right"></i
+        ></a>
+        <a href="#monitor" class="mobile-link"
+          >Monitoring <i class="fa-solid fa-arrow-right"></i
+        ></a>
+      </div>
+    </div>
+
 
     <!-- DASHBOARD HEADER -->
 

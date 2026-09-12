@@ -424,7 +424,6 @@ a {
 .section-heading p {
   color: var(--muted);
   line-height: 1.75;
-  text-align: center;
 }
 .process-card {
   height: 100%;
