@@ -10,3 +10,4 @@ scikit-learn
 pandas
 tqdm
 edgeimpulse   # optional, if using Edge Impulse Python SDK
+whitenoise
